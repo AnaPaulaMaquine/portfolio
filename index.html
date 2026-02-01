@@ -125,8 +125,20 @@
 
         .btn-outline-gold { border: 1px solid var(--gold); color: var(--navy); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 8px 20px; text-decoration: none; border-radius: 4px; transition: 0.3s; display: inline-block; }
         .btn-outline-gold:hover { background: var(--gold); color: white; }
-
-        .about-img { width: 100%; max-width: 280px; border-radius: 6px; box-shadow: 12px 12px 0 var(--gold); border: 5px solid var(--white); }
+        /* --- AJUSTE DA FOTO PARA REDONDA COM SOMBRA GOLD --- */
+		.about-img {
+		    width: 280px;                  /* Tamanho da imagem */
+		    height: 280px;                 /* Altura igual à largura para ser um círculo perfeito */
+		    object-fit: cover;             /* Não deixa a foto esticar ou achatar */
+		    border-radius: 50%;            /* O segredo para ficar redonda */
+		    border: 5px solid var(--white); /* Borda branca interna para destacar */
+		    box-shadow: 10px 10px 0 var(--gold); /* Este é o efeito gold que estava no quadrado, agora no círculo */
+		    transition: transform 0.3s ease;
+		}
+		
+		.about-img:hover {
+		    transform: scale(1.03);        /* Leve zoom ao passar o mouse */
+		}
         .card-img { height: 180px; object-fit: cover; width: 100%; border-bottom: 2px solid var(--gold); }
         .card-body-content { padding: 25px; }
         .category-tag { color: var(--gold); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
