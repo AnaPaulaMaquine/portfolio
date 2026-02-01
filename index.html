@@ -24,7 +24,7 @@
         body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
         h1, h2, h3 { font-family: 'Playfair Display', serif; }
 
-        /* --- PRELOADER CINEMATOGRÁFICO --- */
+        /* --- PRELOADER CORRIGIDO --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             z-index: 10000; display: flex; justify-content: center; align-items: center;
@@ -43,14 +43,31 @@
         .loader-panel.right { right: 0; }
         #preloader.hidden .loader-panel.left { transform: translateX(-100%); }
         #preloader.hidden .loader-panel.right { transform: translateX(100%); }
-        .loader-wrapper { position: relative; z-index: 10001; text-align: center; transition: opacity 0.5s ease; }
-        .loader-logo { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); font-weight: 700; letter-spacing: 5px; margin-bottom: 10px; }
+        
+        .loader-wrapper { 
+            position: relative; 
+            z-index: 10001; 
+            text-align: center; 
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            transition: opacity 0.5s ease; 
+        }
+        .loader-logo { 
+            font-family: 'Playfair Display', serif; 
+            font-size: 3rem; 
+            color: var(--gold); 
+            font-weight: 700; 
+            letter-spacing: 2px; /* Reduzido para centralizar no mobile */
+            margin-bottom: 10px; 
+        }
         .loader-bar { width: 0; height: 3px; background: var(--gold); margin: 0 auto; animation: loading-bar 1.5s cubic-bezier(0.1, 0.2, 0.3, 1) forwards; }
-        @keyframes loading-bar { 0% { width: 0; } 100% { width: 150px; } }
+        @keyframes loading-bar { 0% { width: 0; } 100% { width: 120px; } }
 
-        /* --- NAVBAR GLASSMORPHISM (Melhoria 1) --- */
+        /* --- NAVBAR GLASSMORPHISM & MOBILE FIX --- */
         .navbar { 
-            background-color: rgba(27, 38, 59, 0.85) !important; 
+            background-color: rgba(27, 38, 59, 0.92) !important; 
             backdrop-filter: blur(10px); 
             -webkit-backdrop-filter: blur(10px);
             border-bottom: 2px solid var(--gold); 
@@ -59,6 +76,12 @@
         }
         .nav-link { color: var(--white) !important; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin: 0 10px; }
         .nav-link:hover { color: var(--gold) !important; }
+
+        /* Corrigindo o ícone do Menu Hambúrguer */
+        .navbar-toggler { border-color: var(--gold); }
+        .navbar-toggler-icon { 
+            background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28197, 164, 103, 1%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e") !important; 
+        }
 
         section { scroll-margin-top: 80px; padding: 40px 0; }
 
@@ -82,7 +105,7 @@
         }
         .custom-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important; }
 
-        /* --- CLIPPING MELHORADO (Melhoria 3) --- */
+        /* --- CLIPPING MELHORADO --- */
         .clipping-card { 
             padding: 25px; 
             height: 100%; 
@@ -107,7 +130,7 @@
             margin-bottom: 15px;
         }
 
-        /* --- MARCAS (PROPORCIONAIS) --- */
+        /* --- MARCAS --- */
         .brand-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 50px; padding: 30px 0; filter: grayscale(100%); opacity: 0.6; transition: 0.5s; }
         .brand-container:hover { filter: grayscale(0%); opacity: 1; }
         .brand-item { height: 50px; display: flex; align-items: center; }
@@ -125,20 +148,17 @@
 
         .btn-outline-gold { border: 1px solid var(--gold); color: var(--navy); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 8px 20px; text-decoration: none; border-radius: 4px; transition: 0.3s; display: inline-block; }
         .btn-outline-gold:hover { background: var(--gold); color: white; }
-        /* --- AJUSTE DA FOTO PARA REDONDA COM SOMBRA GOLD --- */
+
+        /* FOTO REDONDA */
 		.about-img {
-		    width: 280px;                  /* Tamanho da imagem */
-		    height: 280px;                 /* Altura igual à largura para ser um círculo perfeito */
-		    object-fit: cover;             /* Não deixa a foto esticar ou achatar */
-		    border-radius: 50%;            /* O segredo para ficar redonda */
-		    border: 5px solid var(--white); /* Borda branca interna para destacar */
-		    box-shadow: 10px 10px 0 var(--gold); /* Este é o efeito gold que estava no quadrado, agora no círculo */
-		    transition: transform 0.3s ease;
+			width: 280px; height: 280px;
+			object-fit: cover; border-radius: 50%;
+			border: 5px solid var(--white);
+			box-shadow: 10px 10px 0 var(--gold);
+			transition: transform 0.3s ease;
 		}
-		
-		.about-img:hover {
-		    transform: scale(1.03);        /* Leve zoom ao passar o mouse */
-		}
+		.about-img:hover { transform: scale(1.03); }
+
         .card-img { height: 180px; object-fit: cover; width: 100%; border-bottom: 2px solid var(--gold); }
         .card-body-content { padding: 25px; }
         .category-tag { color: var(--gold); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
@@ -151,11 +171,11 @@
         .service-card { padding: 40px 20px; text-align: center; height: 100%; }
         .service-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
 
-        /* --- FAQ --- */
+        /* FAQ */
         .accordion-button:not(.collapsed) { background-color: var(--cream); color: var(--navy); box-shadow: none; }
         .accordion-button { font-weight: 600; }
 
-        /* --- WHATSAPP FLUTUANTE --- */
+        /* WHATSAPP */
         .whatsapp-float {
             position: fixed; bottom: 30px; right: 30px;
             background-color: #25d366; color: #FFF; width: 60px; height: 60px;
@@ -165,7 +185,7 @@
         }
         .whatsapp-float:hover { transform: scale(1.1); color: white; background-color: #128c7e; }
 
-        /* --- CTA --- */
+        /* CTA */
         .cta-section { background: var(--navy); color: var(--white); padding: 60px 0; text-align: center; }
         .btn-whatsapp { 
             background: #25D366; color: white; border: none; padding: 16px 40px; 
@@ -201,7 +221,7 @@
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarNav">
-                <ul class="navbar-nav ms-auto">
+                <ul class="navbar-nav ms-auto text-center">
                     <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
                     <li class="nav-item"><a class="nav-link" href="#career">Trajetória</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
@@ -222,7 +242,6 @@
             <div class="d-flex justify-content-center flex-wrap">
                 <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#resumeModal" class="btn-action btn-cv" title="Clique para abrir meu currículo completo"><i class="fas fa-eye me-2"></i> Ver Currículo</a>
                 <a href="https://www.linkedin.com/in/anapaulamaquine/" target="_blank" class="btn-action btn-linkedin" title="Visite meu perfil profissional no LinkedIn">LinkedIn</a>
-				<!-- <i class="fab fa-linkedin-in me-2"></i> -->
             </div>
         </div>
     </section>
@@ -254,21 +273,11 @@
     <section id="brands" class="bg-white py-5">
         <div class="container">
             <div class="brand-container" data-aos="fade-up">
-                <div class="brand-item">
-                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=RECORD+TV" alt="Record TV">
-                </div>
-                <div class="brand-item">
-                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=DEFENSORIA" alt="Defensoria Pública">
-                </div>
-                <div class="brand-item">
-                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=MIDIACLIP" alt="Midiaclip">
-                </div>
-                <div class="brand-item">
-                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=ARROZ+DE+HAUCA" alt="Arroz de Hauçá">
-                </div>
-                <div class="brand-item">
-                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=BAHIA+NO+AR" alt="Bahia no Ar">
-                </div>
+                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=RECORD+TV" alt="Record TV"></div>
+                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=DEFENSORIA" alt="Defensoria Pública"></div>
+                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=MIDIACLIP" alt="Midiaclip"></div>
+                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=ARROZ+DE+HAUCA" alt="Arroz de Hauçá"></div>
+                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=BAHIA+NO+AR" alt="Bahia no Ar"></div>
             </div>
         </div>
     </section>
@@ -297,34 +306,10 @@
         <div class="container">
             <h2 class="text-center mb-4">Expertise Profissional</h2>
             <div class="row g-4">
-                <div class="col-md-3" data-aos="zoom-in">
-                    <div class="service-card">
-                        <i class="fas fa-bullhorn"></i>
-                        <h5>Assessoria de Imprensa</h5>
-                        <p class="small text-muted">Gestão estratégica de imagem e relacionamento com veículos de comunicação.</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                    <div class="service-card">
-                        <i class="fas fa-chart-line"></i>
-                        <h5>Marketing Político</h5>
-                        <p class="small text-muted">Inteligência aplicada a campanhas e monitoramento de reputação.</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                    <div class="service-card">
-                        <i class="fas fa-pen-nib"></i>
-                        <h5>Content Strategy</h5>
-                        <p class="small text-muted">Desenvolvimento de narrativas digitais com foco em autoridade e alcance.</p>
-                    </div>
-                </div>
-                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                    <div class="service-card">
-                        <i class="fas fa-exclamation-triangle"></i>
-                        <h5>Gestão de Crise</h5>
-                        <p class="small text-muted">Prevenção e resposta rápida para proteção de ativos reputacionais.</p>
-                    </div>
-                </div>
+                <div class="col-md-3" data-aos="zoom-in"><div class="service-card"><i class="fas fa-bullhorn"></i><h5>Assessoria de Imprensa</h5><p class="small text-muted">Gestão estratégica de imagem e relacionamento com veículos de comunicação.</p></div></div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100"><div class="service-card"><i class="fas fa-chart-line"></i><h5>Marketing Político</h5><p class="small text-muted">Inteligência aplicada a campanhas e monitoramento de reputação.</p></div></div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200"><div class="service-card"><i class="fas fa-pen-nib"></i><h5>Content Strategy</h5><p class="small text-muted">Desenvolvimento de narrativas digitais com foco em autoridade e alcance.</p></div></div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300"><div class="service-card"><i class="fas fa-exclamation-triangle"></i><h5>Gestão de Crise</h5><p class="small text-muted">Prevenção e resposta rápida para proteção de ativos reputacionais.</p></div></div>
             </div>
         </div>
     </section>
@@ -336,31 +321,19 @@
                 <div class="col-md-4" data-aos="fade-up">
                     <div class="custom-card">
                         <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=800" class="card-img">
-                        <div class="card-body-content">
-                            <span class="category-tag">Campanhas</span>
-                            <h5>Gestão de Imagem</h5>
-                            <p class="small text-muted">Estratégias de clipping para candidatos majoritários em Salvador.</p>
-                        </div>
+                        <div class="card-body-content"><span class="category-tag">Campanhas</span><h5>Gestão de Imagem</h5><p class="small text-muted">Estratégias de clipping para candidatos majoritários em Salvador.</p></div>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
                     <div class="custom-card">
                         <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" class="card-img">
-                        <div class="card-body-content">
-                            <span class="category-tag">Audiovisual</span>
-                            <h5>Arroz de Hauçá</h5>
-                            <p class="small text-muted">Desenvolvimento de press kits e media training para produções.</p>
-                        </div>
+                        <div class="card-body-content"><span class="category-tag">Audiovisual</span><h5>Arroz de Hauçá</h5><p class="small text-muted">Desenvolvimento de press kits e media training para produções.</p></div>
                     </div>
                 </div>
                 <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
                     <div class="custom-card">
                         <img src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?auto=format&fit=crop&q=80&w=800" class="card-img">
-                        <div class="card-body-content">
-                            <span class="category-tag">Cultura</span>
-                            <h5>Portal Oxe!</h5>
-                            <p class="small text-muted">Gestão completa de conteúdo do guia cultural referência na Bahia.</p>
-                        </div>
+                        <div class="card-body-content"><span class="category-tag">Cultura</span><h5>Portal Oxe!</h5><p class="small text-muted">Gestão completa de conteúdo do guia cultural referência na Bahia.</p></div>
                     </div>
                 </div>
             </div>
@@ -375,11 +348,7 @@
                     <div class="clipping-card">
                         <span class="badge-clipping">Prêmio Profissional</span>
                         <h5 class="mb-3">Cantor Luís Martins é finalista do Prêmio Profissionais da Música 2025</h5>
-                        <p class="small text-muted mb-4">
-                            O artista baiano concorre em três categorias. Álbum “Caminhos” com direção de Cristovão Bastos.
-                            <br><br>
-                            <strong>Escrito por Ana Paula Maquiné</strong>
-                        </p>
+                        <p class="small text-muted mb-4">O artista baiano concorre em três categorias. Álbum “Caminhos” com direção de Cristovão Bastos.<br><br><strong>Escrito por Ana Paula Maquiné</strong></p>
                         <a href="https://cartaodevisita.r7.com/conteudo/55073/cantor-luis-martins-e-finalista-do-premio-profissionais-da-musica-2025" target="_blank" class="btn-outline-gold">Ler matéria completa</a>
                     </div>
                 </div>
@@ -387,11 +356,7 @@
                     <div class="clipping-card">
                         <span class="badge-clipping">Cultura & Arte</span>
                         <h5 class="mb-3">Luís Martins lança clipe romântico neste Dia dos Namorados</h5>
-                        <p class="small text-muted mb-4">
-                            Faixa “Seus Olhos” do álbum “Caminhos” ganha clipe intimista com direção artística de Cristovão Bastos.
-                            <br><br>
-                            <strong>Assessoria: Ana Paula Maquiné</strong>
-                        </p>
+                        <p class="small text-muted mb-4">Faixa “Seus Olhos” do álbum “Caminhos” ganha clipe intimista com direção artística de Cristovão Bastos.<br><br><strong>Assessoria: Ana Paula Maquiné</strong></p>
                         <a href="https://www.youtube.com/watch?v=GYwh7jU-kV8" target="_blank" class="btn-outline-gold">Ver clipe</a>
                     </div>
                 </div>
@@ -406,28 +371,12 @@
                 <div class="col-lg-8 mx-auto">
                     <div class="accordion" id="accordionFAQ">
                         <div class="accordion-item mb-3">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
-                                    Como funciona a consultoria de gestão de crise?
-                                </button>
-                            </h2>
-                            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                                <div class="accordion-body">
-                                    A gestão de crise envolve o monitoramento em tempo real, criação de notas oficiais rápidas e media training para alinhar o discurso e proteger a reputação.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">Como funciona a consultoria de gestão de crise?</button></h2>
+                            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">A gestão de crise envolve o monitoramento em tempo real, criação de notas oficiais rápidas e media training para alinhar o discurso e proteger a reputação.</div></div>
                         </div>
                         <div class="accordion-item mb-3">
-                            <h2 class="accordion-header">
-                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
-                                    Você atende clientes fora de Salvador?
-                                </button>
-                            </h2>
-                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
-                                <div class="accordion-body">
-                                    Sim! Através de ferramentas digitais, realizamos consultorias e monitoramento de imagem para clientes em todo o Brasil.
-                                </div>
-                            </div>
+                            <h2 class="accordion-header"><button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">Você atende clientes fora de Salvador?</button></h2>
+                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ"><div class="accordion-body">Sim! Através de ferramentas digitais, realizamos consultorias e monitoramento de imagem para clientes em todo o Brasil.</div></div>
                         </div>
                     </div>
                 </div>
@@ -439,9 +388,7 @@
         <div class="container" data-aos="zoom-in">
             <h2 class="mb-4">Precisa de uma estratégia de comunicação que gere impacto?</h2>
             <p class="lead mb-4 opacity-75">Vamos conversar e transformar sua visibilidade em autoridade.</p>
-            <a href="https://wa.me/5571981245990" target="_blank" class="btn-whatsapp" title="Iniciar conversa agora">
-                <i class="fab fa-whatsapp me-2"></i> Vamos conversar no WhatsApp
-            </a>
+            <a href="https://wa.me/5571981245990" target="_blank" class="btn-whatsapp"><i class="fab fa-whatsapp me-2"></i> Vamos conversar no WhatsApp</a>
         </div>
     </section>
 
@@ -464,9 +411,7 @@
                     <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
                 </div>
                 <div class="modal-body p-0"><iframe src="assets/curriculoAnaPaula.pdf"></iframe></div>
-                <div class="modal-footer">
-                    <a href="assets/curriculoAnaPaula.pdf" download class="btn btn-dark btn-sm">Baixar PDF</a>
-                </div>
+                <div class="modal-footer"><a href="assets/curriculoAnaPaula.pdf" download class="btn btn-dark btn-sm">Baixar PDF</a></div>
             </div>
         </div>
     </div>
@@ -475,22 +420,14 @@
     <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
     <script>
         AOS.init({ duration: 800, once: true });
-
         window.addEventListener('load', function() {
             const preloader = document.getElementById('preloader');
             const loaderWrapper = document.querySelector('.loader-wrapper');
-            
-            // Sincronia do Preloader
             setTimeout(() => {
                 if(loaderWrapper) loaderWrapper.style.opacity = '0';
-                
                 setTimeout(() => {
                     preloader.classList.add('hidden');
-                    
-                    setTimeout(() => {
-                        preloader.style.display = 'none';
-                        AOS.refresh();
-                    }, 1200);
+                    setTimeout(() => { preloader.style.display = 'none'; AOS.refresh(); }, 1200);
                 }, 300);
             }, 1200);
         });
