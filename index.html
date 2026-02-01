@@ -3,693 +3,485 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Ana Paula Maquiné | Jornalista</title>
+    <title>Ana Paula Maquiné | Comunicação Estratégica</title>
+    
+    <link rel="icon" type="image/png" href="https://cdn-icons-png.flaticon.com/512/21/21601.png">
+    
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@700&family=Source+Sans+Pro:wght@300;400;600;700&family=Libre+Baskerville&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <link href="https://unpkg.com/aos@2.3.4/dist/aos.css" rel="stylesheet">
+    
     <style>
         :root {
-            --primary: #d32f2f;
-            --secondary: #1976d2;
-            --dark: #121212;
-            --light: #f5f5f5;
-            --gray: #666;
-            --accent: #ff4081;
-        }
-        * { box-sizing: border-box; }
-        body {
-            font-family: 'Source Sans Pro', sans-serif;
-            background: #0f0f0f;
-            color: #eee;
-            line-height: 1.7;
-            overflow-x: hidden;
+            --navy: #1B263B;
+            --gold: #C5A467;
+            --cream: #F8F9FA;
+            --white: #ffffff;
+            --border-light: #d1d1d1;
         }
 
-        /* PRELOADER */
+        body { font-family: 'Inter', sans-serif; background: var(--cream); color: var(--navy); overflow-x: hidden; }
+        h1, h2, h3 { font-family: 'Playfair Display', serif; }
+
+        /* --- PRELOADER CINEMATOGRÁFICO --- */
         #preloader {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-            background: var(--dark); z-index: 9999; display: flex;
-            justify-content: center; align-items: center; transition: opacity 1.5s ease-out;
+            z-index: 10000; display: flex; justify-content: center; align-items: center;
+            visibility: visible;
         }
-        #preloader.hidden { opacity: 0; visibility: hidden; }
-        .typewriter {
-            font-family: 'Playfair Display', serif; font-size: 2.2rem; font-weight: 700;
-            color: var(--primary); overflow: hidden; border-right: 3px solid var(--primary);
-            white-space: nowrap; letter-spacing: 2px;
-            animation: typing 4.5s steps(40) forwards, blink 0.8s infinite;
+        #preloader.hidden { 
+            visibility: hidden; 
+            pointer-events: none; 
+            transition: visibility 1.2s;
         }
-        @keyframes typing {
-            0% { width: 0; }
-            70% { width: 100%; }
-            100% { width: 100%; }
+        .loader-panel {
+            position: absolute; top: 0; width: 50%; height: 100%;
+            background: var(--navy); transition: transform 1s cubic-bezier(0.77, 0, 0.175, 1);
         }
-        @keyframes blink { 50% { border-color: transparent; } }
+        .loader-panel.left { left: 0; }
+        .loader-panel.right { right: 0; }
+        #preloader.hidden .loader-panel.left { transform: translateX(-100%); }
+        #preloader.hidden .loader-panel.right { transform: translateX(100%); }
+        .loader-wrapper { position: relative; z-index: 10001; text-align: center; transition: opacity 0.5s ease; }
+        .loader-logo { font-family: 'Playfair Display', serif; font-size: 3rem; color: var(--gold); font-weight: 700; letter-spacing: 5px; margin-bottom: 10px; }
+        .loader-bar { width: 0; height: 3px; background: var(--gold); margin: 0 auto; animation: loading-bar 1.5s cubic-bezier(0.1, 0.2, 0.3, 1) forwards; }
+        @keyframes loading-bar { 0% { width: 0; } 100% { width: 150px; } }
 
-        /* Navbar */
-        .navbar {
-            background: rgba(18, 18, 18, 0.95); backdrop-filter: blur(15px);
-            border-bottom: 1px solid rgba(211, 47, 47, 0.3); padding: 1rem 0;
+        /* --- NAVBAR GLASSMORPHISM (Melhoria 1) --- */
+        .navbar { 
+            background-color: rgba(27, 38, 59, 0.85) !important; 
+            backdrop-filter: blur(10px); 
+            -webkit-backdrop-filter: blur(10px);
+            border-bottom: 2px solid var(--gold); 
+            padding: 10px 0; 
+            z-index: 1050; 
         }
-        .navbar-brand {
-            font-family: 'Playfair Display', serif; font-weight: 700; font-size: 1.8rem;
-            color: var(--primary) !important;
-        }
-        .nav-link {
-            color: #ddd !important; font-weight: 500; margin: 0 10px; position: relative;
-            transition: 0.3s;
-        }
-        .nav-link::after {
-            content: ''; position: absolute; bottom: -5px; left: 50%; width: 0;
-            height: 2px; background: var(--primary); transition: 0.3s;
-            transform: translateX(-50%);
-        }
-        .nav-link:hover::after { width: 100%; }
-        .nav-link:hover { color: var(--primary) !important; }
+        .nav-link { color: var(--white) !important; font-size: 0.8rem; text-transform: uppercase; font-weight: 600; margin: 0 10px; }
+        .nav-link:hover { color: var(--gold) !important; }
 
-        /* HERO - COMPACTO */
+        section { scroll-margin-top: 80px; padding: 40px 0; }
+
+        /* --- HERO --- */
         .hero {
-            position: relative; min-height: 50vh; display: flex; align-items: center;
-            overflow: hidden; color: white; padding-top: 60px;
+            background: linear-gradient(rgba(27, 38, 59, 0.92), rgba(27, 38, 59, 0.92)), url('https://images.unsplash.com/photo-1495020689067-958852a7765e?auto=format&fit=crop&q=80&w=2000');
+            background-size: cover; background-position: center;
+            padding: 120px 0 80px 0; color: var(--white); text-align: center;
         }
-        .hero video {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            object-fit: cover; opacity: 0.4; z-index: -1;
-        }
-        .hero-overlay {
-            position: absolute; top: 0; left: 0; width: 100%; height: 100%;
-            background: linear-gradient(135deg, rgba(18,18,18,0.9), rgba(211,47,47,0.2));
-            z-index: 1;
-        }
-        .hero-content {
-            position: relative; z-index: 2; text-align: center; max-width: 900px;
-        }
-        .hero h1 {
-            font-family: 'Playfair Display', serif; font-size: 4rem; font-weight: 700;
-            margin-bottom: 0.8rem; text-shadow: 0 3px 10px rgba(0,0,0,0.7);
-        }
-        .hero .tagline {
-            font-size: 1.55rem; font-weight: 500; margin: 1.2rem 0; color: #fff;
-            line-height: 1.4;
-        }
-        .hero p.lead {
-            font-size: 1.35rem; font-weight: 300; margin-bottom: 1.8rem; color: #ddd;
-        }
-        .btn-cta {
-            background: var(--primary); color: white; padding: 15px 34px;
-            border-radius: 50px; font-weight: 600; text-transform: uppercase;
-            letter-spacing: 1.2px; transition: 0.4s; box-shadow: 0 5px 15px rgba(211,47,47,0.4);
-            font-size: 1.05rem;
-        }
-        .btn-cta:hover {
-            background: #b71c1c; transform: translateY(-4px); box-shadow: 0 12px 30px rgba(211,47,47,0.6);
-        }
+        .hero .subtitle { color: var(--gold); font-size: 1rem; text-transform: uppercase; letter-spacing: 2px; margin-bottom: 10px; display: block; }
+        .hero h1 { font-size: 3.5rem; margin-bottom: 15px; }
+        .hero .tagline { font-size: 1.2rem; font-weight: 300; margin-bottom: 30px; }
 
-        /* SOBRE MIM */
-        #about {
-            padding-top: 1.5rem !important;
-            padding-bottom: 3rem;
+        /* --- CARDS COM SOMBRA PROFUNDA --- */
+        .about-card, .custom-card, .service-card, .exp-card, .clipping-card, .accordion-item {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-radius: 8px;
+            box-shadow: 0 15px 45px rgba(0, 0, 0, 0.2) !important; 
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
         }
-        .about-text {
-            background: rgba(30,30,30,0.9); padding: 2rem; border-radius: 16px;
-            border-left: 5px solid var(--primary); box-shadow: 0 10px 30px rgba(0,0,0,0.4);
-        }
+        .custom-card:hover { transform: translateY(-8px); box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important; }
 
-        /* Section Title */
-        .section-title {
-            font-family: 'Playfair Display', serif; font-size: 2.8rem; color: var(--primary);
-            text-align: center; margin-bottom: 2.5rem; position: relative;
-        }
-        .section-title::after {
-            content: ''; width: 100px; height: 4px; background: var(--primary);
-            display: block; margin: 12px auto; border-radius: 2px;
-        }
-
-        /* Timeline */
-        .timeline {
-            position: relative; max-width: 1000px; margin: 0 auto;
-        }
-        .timeline::after {
-            content: ''; position: absolute; width: 4px; background: var(--primary);
-            top: 0; bottom: 0; left: 50%; margin-left: -2px;
-        }
-        .timeline-item {
-            padding: 10px 40px; position: relative; width: 50%;
-        }
-        .timeline-item::after {
-            content: ''; position: absolute; width: 20px; height: 20px;
-            background: var(--primary); border: 4px solid white; border-radius: 50%;
-            top: 15px; z-index: 1;
-        }
-        .left { left: 0; }
-        .right { left: 50%; }
-        .left::after { right: -12px; }
-        .right::after { left: -12px; }
-        .timeline-content {
-            padding: 20px; background: rgba(40,40,40,0.9); border-radius: 12px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); position: relative;
-        }
-        .timeline-content h5 { margin: 0 0 8px; color: var(--primary); }
-        .timeline-content .text-muted { font-size: 0.9rem; }
-
-        /* Project Card com ÍCONE */
-        .project-card {
-            background: rgba(30, 30, 30, 0.8); border: none; border-radius: 16px;
-            overflow: hidden; transition: 0.4s; box-shadow: 0 5px 20px rgba(0,0,0,0.3);
-            text-align: center;
-        }
-        .project-card:hover {
-            transform: translateY(-15px); box-shadow: 0 20px 40px rgba(211,47,47,0.2);
-        }
-        .project-icon {
-            width: 100%; height: 200px; background: linear-gradient(135deg, #333, #555);
-            display: flex; align-items: center; justify-content: center; font-size: 4rem; color: #aaa;
-            transition: 0.4s;
-        }
-        .project-card:hover .project-icon {
-            background: linear-gradient(135deg, var(--primary), #b71c1c); color: white;
-        }
-
-        /* Clipping Card com ÍCONE */
-        .clipping-card {
-            background: rgba(40,40,40,0.9); border-radius: 12px; overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3); transition: 0.3s;
+        /* --- CLIPPING MELHORADO (Melhoria 3) --- */
+        .clipping-card { 
+            padding: 25px; 
+            height: 100%; 
+            border-top: 4px solid var(--gold); 
+            position: relative;
+            overflow: hidden;
         }
         .clipping-card:hover {
-            transform: translateY(-8px); box-shadow: 0 15px 30px rgba(211,47,47,0.2);
+            transform: translateY(-5px);
+            border-top-width: 8px;
+            box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25) !important;
         }
-        .clipping-icon {
-            width: 100%; height: 180px; background: linear-gradient(135deg, #444, #666);
-            display: flex; align-items: center; justify-content: center; font-size: 3.5rem; color: #ccc;
-        }
-        .clipping-card .card-body {
-            padding: 1.2rem;
-        }
-        .clipping-card h6 {
-            color: var(--primary); font-weight: 600; margin-bottom: 0.5rem;
-        }
-        .clipping-card p {
-            font-size: 0.9rem; color: #ccc; margin-bottom: 0.8rem;
-        }
-        .clipping-card a {
-            color: var(--primary); font-weight: 500; text-decoration: none;
-        }
-        .clipping-card a:hover {
-            text-decoration: underline;
-        }
-        .written-by {
-            font-size: 0.85rem; color: #aaa; font-style: italic;
+        .badge-clipping {
+            display: inline-block;
+            padding: 4px 12px;
+            background: var(--navy);
+            color: var(--gold);
+            font-size: 0.65rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            border-radius: 50px;
+            margin-bottom: 15px;
         }
 
-        /* Contact */
-        .contact-form .form-control {
-            background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2);
-            color: white; border-radius: 8px;
-        }
-        .contact-form .form-control:focus {
-            border-color: var(--primary); box-shadow: 0 0 0 0.2rem rgba(211,47,47,0.25);
-        }
+        /* --- MARCAS (PROPORCIONAIS) --- */
+        .brand-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 50px; padding: 30px 0; filter: grayscale(100%); opacity: 0.6; transition: 0.5s; }
+        .brand-container:hover { filter: grayscale(0%); opacity: 1; }
+        .brand-item { height: 50px; display: flex; align-items: center; }
+        .brand-item img { height: 100%; width: auto; max-width: 180px; object-fit: contain; }
 
-        /* Footer */
-        footer {
-            background: #0a0a0a; border-top: 1px solid rgba(211,47,47,0.3);
-            color: #aaa; font-size: 0.9rem;
+        /* BOTÕES */
+        .btn-action {
+            padding: 12px 30px; font-weight: 600; text-transform: uppercase; letter-spacing: 1px;
+            transition: 0.3s; border-radius: 4px; margin: 5px; display: inline-block; text-decoration: none; font-size: 0.8rem; position: relative; z-index: 5;
         }
+        .btn-cv { background: var(--gold); color: white; border: none; }
+        .btn-cv:hover { background: #a38752; color: white; }
+        .btn-linkedin { background: transparent; color: white; border: 2px solid var(--gold); }
+        .btn-linkedin:hover { background: var(--gold); color: white; }
 
-        /* Modal - Currículo */
-        .modal-content {
-            background: #1a1a1a; border: 1px solid var(--primary); color: #eee;
-            box-shadow: 0 0 30px rgba(211,47,47,0.3);
-        }
-        .modal-title {
-            color: var(--primary); font-family: 'Playfair Display', serif;
-        }
-        .resume-body {
-            max-height: 70vh; overflow-y: auto; padding-right: 10px;
-            line-height: 1.8; font-size: 0.95rem;
-        }
-        .resume-body h1 {
-            font-size: 1.7rem; color: var(--primary); text-align: center; margin-bottom: 8px;
-        }
-        .resume-body .contact-info {
-            text-align: center; color: #aaa; font-size: 0.9rem; margin-bottom: 18px;
-        }
-        .resume-body h2 {
-            font-size: 1.25rem; color: var(--primary); border-bottom: 2px solid var(--primary);
-            padding-bottom: 5px; margin: 22px 0 10px;
-        }
-        .resume-body ul {
-            padding-left: 18px; margin-bottom: 12px;
-        }
-        .resume-body li {
-            margin-bottom: 5px;
-        }
-        .resume-body strong, .resume-body em {
-            color: #fff;
-        }
+        .btn-outline-gold { border: 1px solid var(--gold); color: var(--navy); font-size: 0.75rem; text-transform: uppercase; font-weight: 700; padding: 8px 20px; text-decoration: none; border-radius: 4px; transition: 0.3s; display: inline-block; }
+        .btn-outline-gold:hover { background: var(--gold); color: white; }
 
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero { min-height: 45vh; padding-top: 70px; }
-            .hero h1 { font-size: 2.7rem; }
-            .hero .tagline { font-size: 1.25rem; }
-            .hero p.lead { font-size: 1.1rem; }
-            .btn-cta { padding: 12px 28px; font-size: 1rem; }
-            #about { padding-top: 1rem !important; }
-            .typewriter { font-size: 1.6rem; }
-            .timeline-item { width: 100%; padding-left: 40px; padding-right: 40px; }
-            .timeline-item::after { left: 28px; }
-            .left, .right { left: 0; }
-            .timeline::after { left: 31px; }
+        .about-img { width: 100%; max-width: 280px; border-radius: 6px; box-shadow: 12px 12px 0 var(--gold); border: 5px solid var(--white); }
+        .card-img { height: 180px; object-fit: cover; width: 100%; border-bottom: 2px solid var(--gold); }
+        .card-body-content { padding: 25px; }
+        .category-tag { color: var(--gold); font-size: 0.65rem; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; display: block; }
+
+        .exp-card { padding: 20px; margin-bottom: 15px; border-left: 5px solid var(--navy); }
+        .inner-steps { border-left: 2px solid var(--gold); margin-left: 10px; padding-left: 20px; }
+        .step { position: relative; margin-bottom: 10px; font-size: 0.9rem; }
+        .step::before { content: ''; position: absolute; left: -27px; top: 6px; width: 10px; height: 10px; background: var(--gold); border-radius: 50%; }
+
+        .service-card { padding: 40px 20px; text-align: center; height: 100%; }
+        .service-card i { font-size: 2.5rem; color: var(--gold); margin-bottom: 20px; display: block; }
+
+        /* --- FAQ --- */
+        .accordion-button:not(.collapsed) { background-color: var(--cream); color: var(--navy); box-shadow: none; }
+        .accordion-button { font-weight: 600; }
+
+        /* --- WHATSAPP FLUTUANTE --- */
+        .whatsapp-float {
+            position: fixed; bottom: 30px; right: 30px;
+            background-color: #25d366; color: #FFF; width: 60px; height: 60px;
+            border-radius: 50px; text-align: center; font-size: 30px;
+            box-shadow: 2px 2px 15px rgba(0,0,0,0.3); z-index: 1000;
+            display: flex; align-items: center; justify-content: center; text-decoration: none; transition: 0.3s;
         }
+        .whatsapp-float:hover { transform: scale(1.1); color: white; background-color: #128c7e; }
+
+        /* --- CTA --- */
+        .cta-section { background: var(--navy); color: var(--white); padding: 60px 0; text-align: center; }
+        .btn-whatsapp { 
+            background: #25D366; color: white; border: none; padding: 16px 40px; 
+            border-radius: 50px; font-weight: 700; text-decoration: none; display: inline-block; transition: 0.3s;
+            position: relative; z-index: 5;
+        }
+        .btn-whatsapp:hover { background: #128C7E; color: white; transform: scale(1.05); }
+
+        footer { background: var(--navy); color: var(--white); padding: 40px 0 20px 0; border-top: 4px solid var(--gold); }
+        footer i.text-gold { color: var(--gold) !important; }
+        .modal-body iframe { width: 100%; height: 80vh; border: none; }
     </style>
 </head>
 <body>
 
-<!-- PRELOADER -->
-<div id="preloader">
-    <div class="typewriter">Construindo histórias que transformam...</div>
-</div>
+    <a href="https://wa.me/5571981245990" class="whatsapp-float" target="_blank" title="Fale comigo agora no WhatsApp">
+        <i class="fab fa-whatsapp"></i>
+    </a>
 
-<!-- Navbar -->
-<nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container">
-        <a class="navbar-brand" href="#">Ana Paula Maquiné</a>
-        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
-            <span class="navbar-toggler-icon text-light"></span>
-        </button>
-        <div class="collapse navbar-collapse" id="navbarNav">
-            <ul class="navbar-nav ms-auto">
-                <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
-                <li class="nav-item"><a class="nav-link" href="#experience">Experiência</a></li>
-                <li class="nav-item"><a class="nav-link" href="#projects">Projetos</a></li>
-                <li class="nav-item"><a class="nav-link" href="#clippings">Clippings</a></li>
-                <li class="nav-item"><a class="nav-link" href="#contact">Contato</a></li>
-            </ul>
+    <div id="preloader">
+        <div class="loader-wrapper">
+            <div class="loader-logo">APM</div>
+            <div class="loader-bar"></div>
         </div>
+        <div class="loader-panel left"></div>
+        <div class="loader-panel right"></div>
     </div>
-</nav>
 
-<!-- HERO -->
-<section class="hero">
-    <video autoplay muted loop playsinline>
-        <source src="assets/hero-bg.mp4" type="video/mp4">
-    </video>
-    <div class="hero-overlay"></div>
-    <div class="container hero-content" data-aos="fade-up">
-        <h1>Ana Paula Maquiné</h1>
-        <p class="lead">Jornalista | Assessora de Imprensa | Social Media | Criadora de Conteúdo</p>
-        <p class="tagline">
-            <strong>10+ anos</strong> transformando ideias em histórias que geram impacto real.<br>
-            Da redação à estratégia digital, com resultados mensuráveis.
-        </p>
-    </div>
-</section>
-
-<!-- SOBRE MIM -->
-<section id="about" class="py-5">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Sobre Mim</h2>
-        <div class="row align-items-center" data-aos="fade-up">
-            <div class="col-md-4 text-center">
-                <img src="assets/ana-foto.jpg" class="img-fluid rounded-circle" style="width:230px; border:6px solid var(--primary); box-shadow: 0 0 20px rgba(211,47,47,0.4);">
-            </div>
-            <div class="col-md-8">
-                <div class="about-text">
-                    <p class="lead">
-                        Jornalista com <strong>mais de 10 anos de experiência</strong> em <strong>assessoria de imprensa</strong>,
-                        <strong>gestão de redes sociais</strong> e <strong>criação de conteúdo estratégico</strong>.
-                    </p>
-                    <p>
-                        Criei do zero o portal <strong>Oxe! Qual é a Boa?</strong>, liderei equipes em campanhas eleitorais,
-                        e aumentei a visibilidade de marcas com pautas assertivas e relacionamento com a imprensa.
-                    </p>
-                    <p>
-                        Meu diferencial: <strong>organização, criatividade e resultados mensuráveis</strong>.
-                    </p>
-                    <a href="#" data-bs-toggle="modal" data-bs-target="#resumeModal" class="btn btn-outline-light mt-3">
-                        Ver Currículo Completo
-                    </a>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- EXPERIÊNCIA PROFISSIONAL - 100% COMPLETA -->
-<section id="experience" class="py-5 bg-dark">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Experiência Profissional</h2>
-        <div class="timeline" data-aos="fade-up">
-
-            <!-- 2023–2025 -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h5>Produtora Arroz de Hauçá</h5>
-                    <p class="text-muted">2023–2025 | Assessora de Imprensa & Social Media</p>
-                    <p>Press releases nacionais, media training, liderança de equipe, crescimento orgânico em Instagram, TikTok, YouTube. Produção de press kits, videoclipes e talk shows.</p>
-                </div>
-            </div>
-
-            <!-- 2022 Campanha Eleitoral -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h5>Campanha Eleitoral</h5>
-                    <p class="text-muted">2022 | Coordenadora de Comunicação</p>
-                    <p>Gestão de redes da candidata Isabel Guimarães. Relatórios semanais, edição de vídeos, cobertura de eventos.</p>
-                </div>
-            </div>
-
-            <!-- 2022 MIDIACLIP -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h5>MIDIACLIP</h5>
-                    <p class="text-muted">2022 | Coordenadora de Comunicação</p>
-                    <p>Liderança de equipes, edição de vídeo/áudio, pesquisa de campanhas, atendimento ao cliente.</p>
-                </div>
-            </div>
-
-            <!-- 2020–2021 Auxiliar/Supervisora -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h5>Auxiliar de Clipping / Supervisora</h5>
-                    <p class="text-muted">2020–2021</p>
-                    <p>Monitoramento em rádio/TV/portais, edição de vídeo, líder de equipe em campanha eleitoral.</p>
-                </div>
-            </div>
-
-            <!-- 2013–2019 Auxiliar de Clipping -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h5>Auxiliar de Clipping</h5>
-                    <p class="text-muted">2013–2019</p>
-                    <p>Pesquisa, recorte e envio de notícias, supervisora interina em campanhas eleitorais.</p>
-                </div>
-            </div>
-
-            <!-- 2019–2020 Oxe! Qual é a Boa? -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h5>Site Oxe! Qual é a Boa?</h5>
-                    <p class="text-muted">2019–2020 | CEO & Diretora</p>
-                    <p>Criação e gestão do portal de eventos. Cobertura fotográfica, redes sociais, captação de pautas.</p>
-                </div>
-            </div>
-
-            <!-- 2019–2020 Bahia no Ar -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h5>Site Bahia no Ar</h5>
-                    <p class="text-muted">2019–2020 | Repórter</p>
-                    <p>Atualização do site, produção de reportagens, entrevistas, cobertura de eventos.</p>
-                </div>
-            </div>
-
-            <!-- 2012 Record TV -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h5>Record TV</h5>
-                    <p class="text-muted">2012 | Assistente de Produção (Temporário)</p>
-                    <p>Organização do Programa Ídolos em Salvador, bastidores e acompanhamento de candidatos.</p>
-                </div>
-            </div>
-
-            <!-- 2012–2013 Defensoria Pública -->
-            <div class="timeline-item right">
-                <div class="timeline-content">
-                    <h5>Defensoria Pública da Bahia</h5>
-                    <p class="text-muted">2012–2013 | Estagiária de Jornalismo</p>
-                    <p>Atualização do site, releases, follow-up, cobertura de eventos, clipping.</p>
-                </div>
-            </div>
-
-            <!-- 2011–2012 Varjão Comunicação -->
-            <div class="timeline-item left">
-                <div class="timeline-content">
-                    <h5>Varjão Comunicação Integrada</h5>
-                    <p class="text-muted">2011–2012 | Estagiária de Jornalismo</p>
-                    <p>Pesquisa e recorte de notícias online, levantamento diário de resultados.</p>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- PROJETOS -->
-<section id="projects" class="py-5">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Projetos em Destaque</h2>
-        <div class="row g-4">
-            <div class="col-md-6" data-aos="fade-up">
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-calendar-alt"></i></div>
-                    <div class="p-4">
-                        <h5>Oxe! Qual é a Boa?</h5>
-                        <p>Portal de eventos criado do zero. Atualização diária, cobertura fotográfica e redes sociais.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-up">
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-film"></i></div>
-                    <div class="p-4">
-                        <h5>Arroz de Hauçá</h5>
-                        <p>Gestão de redes, press kits, cobertura de videoclipes e talk shows. Crescimento orgânico em todas as plataformas.</p>
-                    </div>
-                </div>
-            </div>
-            <div class="col-md-6" data-aos="fade-up">
-                <div class="project-card">
-                    <div class="project-icon"><i class="fas fa-futbol"></i></div>
-                    <div class="p-4">
-                        <h5>Arroz Sports</h5>
-                        <p>Notícias de futebol, Fórmula 1, playlists e jogos ao vivo. Conteúdo escrito por Ana Paula Maquiné.</p>
-                        <a href="https://arrozsports.com.br/" target="_blank" class="btn btn-sm btn-outline-light mt-2">Visitar Site</a>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- CLIPPINGS & MATÉRIAS -->
-<section id="clippings" class="py-5 bg-dark">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Clippings & Matérias</h2>
-        <div class="row g-4">
-
-            <!-- Matéria 1 -->
-            <div class="col-md-6" data-aos="zoom-in">
-                <div class="clipping-card">
-                    <div class="clipping-icon"><i class="fas fa-trophy"></i></div>
-                    <div class="card-body">
-                        <h6>Cantor Luís Martins é finalista do Prêmio Profissionais da Música 2025</h6>
-                        <p>O artista baiano concorre em três categorias: Criação – Autor, Convergência – Canal digital e Apresentador de TV. Álbum “Caminhos” com direção de Cristovão Bastos.</p>
-                        <p class="written-by">Escrito por Ana Paula Maquiné</p>
-                        <a href="https://cartaodevisita.r7.com/conteudo/55073/cantor-luis-martins-e-finalista-do-premio-profissionais-da-musica-2025" target="_blank">Ler matéria completa</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Matéria 2 -->
-            <div class="col-md-6" data-aos="zoom-in" data-aos-delay="100">
-                <div class="clipping-card">
-                    <div class="clipping-icon"><i class="fas fa-heart"></i></div>
-                    <div class="card-body">
-                        <h6>Luís Martins lança clipe romântico neste Dia dos Namorados</h6>
-                        <p>Faixa “Seus Olhos” do álbum “Caminhos” ganha clipe intimista com direção artística de Cristovão Bastos. Lançamento oficial em 12/06.</p>
-                        <p class="Escrito por Ana Paula Maquiné</p>
-                        <a href="https://anotabahia.com/luis-martins-lanca-clipe-romantico-neste-dia-dos-namorados/" target="_blank">Ver clipe e matéria</a>
-                    </div>
-                </div>
-            </div>
-
-            <!-- Textos Institucionais -->
-            <div class="col-md-12" data-aos="fade-up">
-                <div class="p-4 bg-dark border-start border-danger border-5 rounded">
-                    <h5 class="text-danger">Textos Institucionais – Arroz de Hauçá</h5>
-                    <p class="mb-2"><strong>Escritos por Ana Paula Maquiné</strong></p>
-                    <p>Nascida em 2018, a Arroz de Hauçá é uma produtora audiovisual baiana que investe em qualidade e sofisticação para valorizar a cultura brasileira. Com sede em Salvador e filial em São Paulo, produz vídeos, shows, álbuns, talk shows (Fortuna Crítica), conteúdos para redes sociais e gerenciamento de carreira.</p>
-                    <p><strong>Contato:</strong> (71) 3340-0137 | Av. Tancredo Neves, 2421 – Pituba, Salvador</p>
-                    <a href="https://arrozdehauca.com.br/" target="_blank" class="btn btn-sm btn-outline-danger">Visitar Site</a>
-                </div>
-            </div>
-
-        </div>
-    </div>
-</section>
-
-<!-- CONTATO -->
-<section id="contact" class="py-5">
-    <div class="container">
-        <h2 class="section-title" data-aos="fade-up">Entre em Contato</h2>
-        <div class="row">
-            <div class="col-md-6">
-                <p><i class="fas fa-envelope text-primary"></i> anapaula.pms@hotmail.com</p>
-                <p><i class="fab fa-whatsapp text-success"></i> (71) 98124-5990</p>
-                <p><i class="fas fa-map-marker-alt text-danger"></i> Salvador, BA</p>
-            </div>
-            <div class="col-md-6">
-                <form class="contact-form" action="https://formspree.io/f/xnnzrzgk" method="POST">
-                    <input type="text" name="name" class="form-control mb-3" placeholder="Seu nome" required>
-                    <input type="email" name="email" class="form-control mb-3" placeholder="Seu e-mail" required>
-                    <textarea name="message" class="form-control mb-3" rows="4" placeholder="Sua mensagem" required></textarea>
-                    <button type="submit" class="btn btn-cta w-100">Enviar Mensagem</button>
-                </form>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- FOOTER -->
-<footer class="text-center py-4">
-    <p>© 2025 Ana Paula Maquiné. Todos os direitos reservados.</p>
-</footer>
-
-<!-- MODAL CURRÍCULO - 100% FIEL AO PDF -->
-<div class="modal fade" id="resumeModal" tabindex="-1">
-    <div class="modal-dialog modal-lg">
-        <div class="modal-content">
-            <div class="modal-header border-0">
-                <h5 class="modal-title">Currículo Completo</h5>
-                <button type="button" class="btn-close btn-close-white" data-bs-dismiss="modal"></button>
-            </div>
-            <div class="modal-body resume-body">
-                <h1>ANA PAULA PESSOA MAQUINÉ DA SILVA</h1>
-                <p class="contact-info">
-                    Brasileira, 41 anos<br>
-                    Av. Luís Viana, 6065, Paralela – Salvador – BA<br>
-                    (71) 98124-5990<br>
-                    E-mail: anapaula.pms@hotmail.com
-                </p>
-
-                <h2>RESUMO DE QUALIFICAÇÕES</h2>
-                <p>Jornalista com mais de 10 anos de experiência. Gosto de trabalhar em equipe, sempre com organização, boa comunicação, criatividade, de forma decisiva e competente. Ao longo da minha carreira criei meu próprio site de notícias, liderei equipes, contribuí para o crescimento de perfis de redes sociais atuando como Social Media e aumentei a divulgação da imagem de clientes como Assessora de Imprensa. Tenho como objetivo aperfeiçoar meu perfil profissional, sempre aberta a novidades e disposta a aprender e contribuir com o crescimento da empresa.</p>
-
-                <h2>FORMAÇÃO ACADÊMICA E IDIOMAS</h2>
-                <ul>
-                    <li>Graduação em Comunicação Social com Habilitação em Jornalismo</li>
-                    <li>Pós-graduação em Jornalismo Empresarial e Assessoria de Imprensa</li>
-                    <li>Inglês Intermediário</li>
+    <nav class="navbar navbar-expand-lg navbar-dark fixed-top">
+        <div class="container">
+            <a class="navbar-brand" href="#" style="font-family: 'Playfair Display', serif; color: var(--gold) !important; font-weight: 700;">APM</a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item"><a class="nav-link" href="#about">Sobre</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#career">Trajetória</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#projects">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#clippings">Clippings</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#faq">Dúvidas</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#contact" style="color: var(--gold) !important;">Contato</a></li>
                 </ul>
-
-                <h2>EXPERIÊNCIA PROFISSIONAL</h2>
-
-                <div class="mb-4">
-                    <strong>2023-2025 | PRODUTORA ARROZ DE HAUÇÁ</strong><br>
-                    <em>Assessora de Imprensa</em>
-                    <ul>
-                        <li>Produção de textos jornalísticos e press release para a imprensa local e nacional, atualização de mailing list, sugestão de pautas e entrevistas para a imprensa, follow up, media training, clipping de notícias, gerenciamento de crise, atualização do site institucional com conteúdos sobre a produtora, elaboração de press kits, auxílio na produção de conteúdos dos produtos audiovisuais como videoclipes e talk show, relatórios de resultados alcançados, auxílio na captação de patrocínio, ações de relacionamento interno.</li>
-                    </ul>
-                    <em>Social Media</em>
-                    <ul>
-                        <li>Liderança de equipe, planejamento estratégico, gestão de conteúdo dos perfis da produtora, cobertura de eventos, edição de vídeos, cobertura fotográfica, interação com o público, monitoramento de resultados, análise de resultados, criação e publicação de conteúdos nas principais redes sociais (Instagram, Facebook, YouTube e TikTok), produção de textos para o site de esportes da produtora.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2022 | CAMPANHA ELEITORAL</strong><br>
-                    <em>Coordenadora de Comunicação</em>
-                    <ul>
-                        <li>Atualização das redes sociais da candidata a deputada estadual Isabel Guimarães, elaboração das pautas semanais, liderança da equipe, produção dos conteúdos das redes sociais, produção de relatórios semanais, edição de vídeos, cobertura de eventos e cobertura fotográfica.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2022 | MIDIACRIP</strong><br>
-                    <em>Coordenadora de Comunicação</em>
-                    <ul>
-                        <li>Liderança de equipes, edição de vídeo, edição de áudio, pesquisa de campanhas eleitorais dos candidatos nos principais veículos de comunicação, atendimento ao cliente, reuniões de alinhamento, produção de relatórios.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2020-2021 | Auxiliar de Clipping</strong><br>
-                    <ul>
-                        <li>Monitoramento e análise das menções dos clientes da empresa por meio das notícias veiculadas em rádio, TV, portais de notícias e mídias sociais; edição de vídeo; edição de áudio.</li>
-                    </ul>
-                    <strong>Supervisora de Comunicação</strong>
-                    <ul>
-                        <li>Líder de equipe na campanha de comunicação de candidatos a prefeitos de Salvador e Região Metropolitana na Eleição de 2020.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2013-2019 | Auxiliar de Clipping</strong><br>
-                    <ul>
-                        <li>Pesquisa, recorte e envio de notícias veiculadas em rádios e TVs locais e nacionais, em portais da internet e redes sociais sobre assuntos de total interesse dos seus clientes, supervisora interina, liderança de equipe durante trabalho temporário de campanha eleitoral.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2019-2020 | SITE OXE! QUAL É A BOA?</strong><br>
-                    <em>CEO / Diretora de Comunicação</em>
-                    <ul>
-                        <li>Criação do site “Oxe! Qual é a Boa?” e campanha de divulgação do projeto junto às Assessorias de Comunicação e Assessorias de Imprensa. Atendimento à imprensa, análise das pautas recebidas por meio das Assessorias de Comunicação, atualização do site com notícias sobre eventos em Salvador e Região Metropolitana, atualização das redes sociais, cobertura de eventos, cobertura fotográfica e atendimento por telefone.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2019-2020 | SITE BAHIA NO AR</strong><br>
-                    <em>Repórter</em>
-                    <ul>
-                        <li>Atualização do site com notícias locais, nacionais e internacionais; produção de reportagens; revisão de textos; atendimento à imprensa; entrevistas externas e por telefone; cobertura de eventos e cobertura fotográfica.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2012 | RECORD TV</strong><br>
-                    <em>Assistente de Produção - Temporário</em>
-                    <ul>
-                        <li>Organização da rotina de gravação e dos bastidores do Programa Ídolos em Salvador, orientação e acompanhamento dos candidatos.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2012-2013 | DEFENSORIA PÚBLICA DO ESTADO DA BAHIA</strong><br>
-                    <em>Estagiária de Jornalismo</em>
-                    <ul>
-                        <li>Atualização do site institucional, atualização do mailing list da imprensa, follow up, cobertura de eventos, cobertura fotográfica, produção de matérias, produção de releases, sugestões de pautas, agendamento de entrevistas, atendimento às demandas da imprensa, clipping de notícias, atualização e produção de relatório das redes sociais da instituição, divulgação de pautas, divulgação de notas para veículos de comunicação.</li>
-                    </ul>
-                </div>
-
-                <div class="mb-4">
-                    <strong>2011-2012 | Varjão Comunicação Integrada</strong><br>
-                    <em>Estagiária de Jornalismo</em>
-                    <ul>
-                        <li>Pesquisa e recorte de notícias online veiculadas em sites locais e nacionais sobre assuntos de total interesse dos seus clientes, levantamento do resultado diário.</li>
-                    </ul>
-                </div>
-
             </div>
-            <div class="modal-footer border-0">
-                <a href="assets/Curriculo_Ana Paula Maquinee.pdf" download class="btn btn-cta">
-                    Baixar PDF
-                </a>
+        </div>
+    </nav>
+    
+    <section class="hero">
+        <div class="container" data-aos="fade-up">
+            <span class="subtitle">Jornalista & Estrategista de Comunicação</span>
+            <h1>Ana Paula Maquiné</h1>
+            <p class="tagline"> Assessora de Imprensa | Social Media | Gestão de Imagem</p>
+            <div class="d-flex justify-content-center flex-wrap">
+                <a href="javascript:void(0);" data-bs-toggle="modal" data-bs-target="#resumeModal" class="btn-action btn-cv" title="Clique para abrir meu currículo completo"><i class="fas fa-eye me-2"></i> Ver Currículo</a>
+                <a href="https://www.linkedin.com/in/anapaulamaquine/" target="_blank" class="btn-action btn-linkedin" title="Visite meu perfil profissional no LinkedIn">LinkedIn</a>
+				<!-- <i class="fab fa-linkedin-in me-2"></i> -->
+            </div>
+        </div>
+    </section>
+
+    <section id="about">
+        <div class="container">
+            <div class="about-card" data-aos="fade-up">
+                <div class="row align-items-center p-4">
+                    <div class="col-md-4 text-center mb-4 mb-md-0">
+                        <img src="assets/ana-foto.jpg" alt="Ana Paula Maquiné" class="about-img">
+                    </div>
+                    <div class="col-md-8 ps-md-4">
+                        <h2 class="mb-3">Sobre Mim</h2>
+                        <p style="font-size: 1.05rem; line-height: 1.8;">
+                            Com <strong>mais de uma década</strong> na linha de frente da comunicação baiana, especializei-me em transformar cenários complexos em narrativas de prestígio. Minha atuação transita entre o rigor técnico da Assessoria de Imprensa e a inteligência de dados do Marketing Político. De Coordenadora na Midiaclip a estrategista na Produtora Arroz de Hauçá, minha missão é uma só: garantir que a mensagem certa chegue ao público certo, protegendo a reputação e amplificando o alcance de marcas e figuras públicas através de estratégias digitais de alta performance.
+                        </p>
+                        <div class="row mt-4 g-2">
+                            <div class="col-6 col-md-3 text-center"><i class="fas fa-bullhorn text-gold fs-4"></i><p class="small fw-bold mt-1">Assessoria</p></div>
+                            <div class="col-6 col-md-3 text-center"><i class="fas fa-users text-gold fs-4"></i><p class="small fw-bold mt-1">Liderança</p></div>
+                            <div class="col-6 col-md-3 text-center"><i class="fas fa-video text-gold fs-4"></i><p class="small fw-bold mt-1">Audiovisual</p></div>
+                            <div class="col-6 col-md-3 text-center"><i class="fas fa-shield-alt text-gold fs-4"></i><p class="small fw-bold mt-1">Gestão Crise</p></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="brands" class="bg-white py-5">
+        <div class="container">
+            <div class="brand-container" data-aos="fade-up">
+                <div class="brand-item">
+                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=RECORD+TV" alt="Record TV">
+                </div>
+                <div class="brand-item">
+                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=DEFENSORIA" alt="Defensoria Pública">
+                </div>
+                <div class="brand-item">
+                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=MIDIACLIP" alt="Midiaclip">
+                </div>
+                <div class="brand-item">
+                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=ARROZ+DE+HAUCA" alt="Arroz de Hauçá">
+                </div>
+                <div class="brand-item">
+                    <img src="https://placehold.co/200x80/1B263B/C5A467?text=BAHIA+NO+AR" alt="Bahia no Ar">
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="career">
+        <div class="container">
+            <h2 class="text-center mb-4">Trajetória Profissional</h2>
+            <div class="exp-card" data-aos="fade-up"><strong>Produtora Arroz de Hauçá (2023-2025)</strong><p class="small mb-0">Assessora de Imprensa: Media training e gestão de crises.</p></div>
+            <div class="exp-card" data-aos="fade-up"><strong>MIDIACLIP (9 Anos)</strong>
+                <div class="inner-steps">
+                    <div class="step"><strong>Coordenadora (2022):</strong> Liderança e atendimento estratégico.</div>
+                    <div class="step"><strong>Supervisora (2020-2021):</strong> Monitoramento eleitoral.</div>
+                    <div class="step"><strong>Auxiliar (2013-2019):</strong> Monitoramento analítico.</div>
+                </div>
+            </div>
+            <div class="row g-3">
+                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Bahia no Ar (2019-2020)</h6><p class="small text-muted mb-0">Repórter e redação.</p></div></div>
+                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Record TV (2012)</h6><p class="small text-muted mb-0">Assistente de Produção.</p></div></div>
+                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Defensoria Pública (2012-2013)</h6><p class="small text-muted mb-0">Estagiária: Releases e clipping.</p></div></div>
+                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Varjão Comunicação (2011-2012)</h6><p class="small text-muted mb-0">Estagiária: Pesquisa analítica.</p></div></div>
+            </div>
+        </div>
+    </section>
+
+    <section id="services" class="bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Expertise Profissional</h2>
+            <div class="row g-4">
+                <div class="col-md-3" data-aos="zoom-in">
+                    <div class="service-card">
+                        <i class="fas fa-bullhorn"></i>
+                        <h5>Assessoria de Imprensa</h5>
+                        <p class="small text-muted">Gestão estratégica de imagem e relacionamento com veículos de comunicação.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="service-card">
+                        <i class="fas fa-chart-line"></i>
+                        <h5>Marketing Político</h5>
+                        <p class="small text-muted">Inteligência aplicada a campanhas e monitoramento de reputação.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="service-card">
+                        <i class="fas fa-pen-nib"></i>
+                        <h5>Content Strategy</h5>
+                        <p class="small text-muted">Desenvolvimento de narrativas digitais com foco em autoridade e alcance.</p>
+                    </div>
+                </div>
+                <div class="col-md-3" data-aos="zoom-in" data-aos-delay="300">
+                    <div class="service-card">
+                        <i class="fas fa-exclamation-triangle"></i>
+                        <h5>Gestão de Crise</h5>
+                        <p class="small text-muted">Prevenção e resposta rápida para proteção de ativos reputacionais.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="projects">
+        <div class="container">
+            <h2 class="text-center mb-4">Projetos Estratégicos</h2>
+            <div class="row g-4">
+                <div class="col-md-4" data-aos="fade-up">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1529107386315-e1a2ed48a620?auto=format&fit=crop&q=80&w=800" class="card-img">
+                        <div class="card-body-content">
+                            <span class="category-tag">Campanhas</span>
+                            <h5>Gestão de Imagem</h5>
+                            <p class="small text-muted">Estratégias de clipping para candidatos majoritários em Salvador.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="100">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1557804506-669a67965ba0?auto=format&fit=crop&q=80&w=800" class="card-img">
+                        <div class="card-body-content">
+                            <span class="category-tag">Audiovisual</span>
+                            <h5>Arroz de Hauçá</h5>
+                            <p class="small text-muted">Desenvolvimento de press kits e media training para produções.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4" data-aos="fade-up" data-aos-delay="200">
+                    <div class="custom-card">
+                        <img src="https://images.unsplash.com/photo-1491336477066-31156b5e4f35?auto=format&fit=crop&q=80&w=800" class="card-img">
+                        <div class="card-body-content">
+                            <span class="category-tag">Cultura</span>
+                            <h5>Portal Oxe!</h5>
+                            <p class="small text-muted">Gestão completa de conteúdo do guia cultural referência na Bahia.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="clippings" class="bg-white">
+        <div class="container">
+            <h2 class="text-center mb-4">Clippings & Matérias</h2>
+            <div class="row g-4">
+                <div class="col-md-6" data-aos="fade-right">
+                    <div class="clipping-card">
+                        <span class="badge-clipping">Prêmio Profissional</span>
+                        <h5 class="mb-3">Cantor Luís Martins é finalista do Prêmio Profissionais da Música 2025</h5>
+                        <p class="small text-muted mb-4">
+                            O artista baiano concorre em três categorias. Álbum “Caminhos” com direção de Cristovão Bastos.
+                            <br><br>
+                            <strong>Escrito por Ana Paula Maquiné</strong>
+                        </p>
+                        <a href="https://cartaodevisita.r7.com/conteudo/55073/cantor-luis-martins-e-finalista-do-premio-profissionais-da-musica-2025" target="_blank" class="btn-outline-gold">Ler matéria completa</a>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-left">
+                    <div class="clipping-card">
+                        <span class="badge-clipping">Cultura & Arte</span>
+                        <h5 class="mb-3">Luís Martins lança clipe romântico neste Dia dos Namorados</h5>
+                        <p class="small text-muted mb-4">
+                            Faixa “Seus Olhos” do álbum “Caminhos” ganha clipe intimista com direção artística de Cristovão Bastos.
+                            <br><br>
+                            <strong>Assessoria: Ana Paula Maquiné</strong>
+                        </p>
+                        <a href="https://www.youtube.com/watch?v=GYwh7jU-kV8" target="_blank" class="btn-outline-gold">Ver clipe e matéria</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="faq">
+        <div class="container">
+            <h2 class="text-center mb-4">Dúvidas Frequentes</h2>
+            <div class="row">
+                <div class="col-lg-8 mx-auto">
+                    <div class="accordion" id="accordionFAQ">
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q1">
+                                    Como funciona a consultoria de gestão de crise?
+                                </button>
+                            </h2>
+                            <div id="q1" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    A gestão de crise envolve o monitoramento em tempo real, criação de notas oficiais rápidas e media training para alinhar o discurso e proteger a reputação.
+                                </div>
+                            </div>
+                        </div>
+                        <div class="accordion-item mb-3">
+                            <h2 class="accordion-header">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#q2">
+                                    Você atende clientes fora de Salvador?
+                                </button>
+                            </h2>
+                            <div id="q2" class="accordion-collapse collapse" data-bs-parent="#accordionFAQ">
+                                <div class="accordion-body">
+                                    Sim! Através de ferramentas digitais, realizamos consultorias e monitoramento de imagem para clientes em todo o Brasil.
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="contact" class="cta-section">
+        <div class="container" data-aos="zoom-in">
+            <h2 class="mb-4">Precisa de uma estratégia de comunicação que gere impacto?</h2>
+            <p class="lead mb-4 opacity-75">Vamos conversar e transformar sua visibilidade em autoridade.</p>
+            <a href="https://wa.me/5571981245990" target="_blank" class="btn-whatsapp" title="Iniciar conversa agora">
+                <i class="fab fa-whatsapp me-2"></i> Vamos conversar no WhatsApp
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container text-center">
+            <div class="row mb-3 small g-3">
+                <div class="col-md-4"><i class="fas fa-envelope me-2 text-gold"></i><span>anapaula.pms@hotmail.com</span></div>
+                <div class="col-md-4"><i class="fas fa-phone me-2 text-gold"></i><span>(71) 98124-5990</span></div>
+                <div class="col-md-4"><i class="fas fa-map-marker-alt me-2 text-gold"></i><span>Salvador, Bahia</span></div>
+            </div>
+            <p class="small opacity-50 mb-0">© 2026 Ana Paula Maquiné. Todos os direitos reservados.</p>
+        </div>
+    </footer>
+
+    <div class="modal fade" id="resumeModal" tabindex="-1">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title">Currículo Profissional</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                </div>
+                <div class="modal-body p-0"><iframe src="assets/curriculoAnaPaula.pdf"></iframe></div>
+                <div class="modal-footer">
+                    <a href="assets/curriculoAnaPaula.pdf" download class="btn btn-dark btn-sm">Baixar PDF</a>
+                </div>
             </div>
         </div>
     </div>
-</div>
 
-<!-- Scripts -->
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
-<script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
-<script>
-    AOS.init({ duration: 1000 });
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.4/dist/aos.js"></script>
+    <script>
+        AOS.init({ duration: 800, once: true });
 
-    setTimeout(() => {
-        const preloader = document.getElementById('preloader');
-        preloader.classList.add('hidden');
-        setTimeout(() => preloader.style.display = 'none', 1500);
-    }, 5000);
-
-    document.querySelectorAll('a.nav-link').forEach(a => {
-        a.addEventListener('click', e => {
-            e.preventDefault();
-            document.querySelector(a.getAttribute('href')).scrollIntoView({ behavior: 'smooth' });
+        window.addEventListener('load', function() {
+            const preloader = document.getElementById('preloader');
+            const loaderWrapper = document.querySelector('.loader-wrapper');
+            
+            // Sincronia do Preloader
+            setTimeout(() => {
+                if(loaderWrapper) loaderWrapper.style.opacity = '0';
+                
+                setTimeout(() => {
+                    preloader.classList.add('hidden');
+                    
+                    setTimeout(() => {
+                        preloader.style.display = 'none';
+                        AOS.refresh();
+                    }, 1200);
+                }, 300);
+            }, 1200);
         });
-    });
-</script>
+    </script>
 </body>
 </html>
