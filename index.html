@@ -263,6 +263,156 @@
 }
 
 
+        /* --- SEÇÃO DE VÍDEOS --- */
+        .video-section-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+        .video-badge-destaque {
+            display: inline-block;
+            background: linear-gradient(135deg, var(--gold), #a38752);
+            color: white;
+            font-size: 0.7rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            padding: 6px 18px;
+            border-radius: 50px;
+            margin-bottom: 15px;
+        }
+        .video-card {
+            background: var(--white);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 15px 45px rgba(0,0,0,0.2);
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--gold);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            height: 100%;
+        }
+        .video-card:hover {
+            transform: translateY(-6px);
+            box-shadow: 0 25px 60px rgba(0,0,0,0.28);
+        }
+        .video-card video {
+            width: 100%;
+            display: block;
+            background: #000;
+            aspect-ratio: 9 / 16;
+            object-fit: cover;
+        }
+        .video-card-body {
+            padding: 20px;
+        }
+        .video-tag {
+            display: inline-block;
+            background: var(--navy);
+            color: var(--gold);
+            font-size: 0.62rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+        }
+        .video-tag-capcut {
+            display: inline-block;
+            background: #1a1a2e;
+            color: #e0e0ff;
+            font-size: 0.58rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 3px 10px;
+            border-radius: 50px;
+            margin-bottom: 10px;
+            margin-left: 5px;
+        }
+        .video-card-body h6 {
+            font-family: 'Playfair Display', serif;
+            font-size: 1rem;
+            color: var(--navy);
+            margin-bottom: 8px;
+        }
+        .video-card-body p {
+            font-size: 0.82rem;
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 0;
+        }
+        .video-cta-simples {
+            margin-top: 40px;
+            padding: 22px 28px;
+            border: 1px solid var(--border-light);
+            border-left: 3px solid var(--gold);
+            border-radius: 8px;
+            background: var(--white);
+            box-shadow: 0 4px 18px rgba(0,0,0,0.08);
+            display: flex;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+        .video-cta-texto {
+            font-size: 0.82rem;
+            color: #555;
+            margin: 0;
+            flex: 1 1 200px;
+        }
+        .video-cta-links {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+        }
+        .video-cta-link {
+            display: inline-flex;
+            align-items: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            color: var(--navy);
+            text-decoration: none;
+            border: 1px solid var(--border-light);
+            border-radius: 50px;
+            padding: 5px 14px;
+            transition: 0.2s;
+        }
+        .video-cta-link:hover {
+            border-color: var(--gold);
+            color: var(--gold);
+        }
+        .video-cta-link i { color: #c13584; }
+        .destaque-vaga-banner {
+            background: var(--white);
+            border-radius: 8px;
+            padding: 16px 22px;
+            margin-bottom: 45px;
+            display: flex;
+            align-items: center;
+            gap: 14px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.12);
+            border: 1px solid rgba(27,38,59,0.18);
+            border-left: 4px solid var(--gold);
+        }
+        .destaque-vaga-banner i {
+            font-size: 1.2rem;
+            color: var(--gold);
+            flex-shrink: 0;
+        }
+        .destaque-vaga-banner p {
+            margin: 0;
+            color: var(--navy);
+            font-size: 0.82rem;
+            font-weight: 400;
+            line-height: 1.6;
+        }
+        .destaque-vaga-banner strong {
+            font-size: 0.85rem;
+            font-weight: 700;
+            display: inline;
+            margin-bottom: 0;
+        }
+
 html, body {
     max-width: 100% !important;
     overflow-x: hidden !important; /* Trava a rolagem lateral que empurra o botão */
@@ -297,6 +447,7 @@ html, body {
                     <li class="nav-item"><a class="nav-link" href="#career">Trajetória</a></li>
                     <li class="nav-item"><a class="nav-link" href="#services">Expertise</a></li>
                     <li class="nav-item"><a class="nav-link" href="#projects">Projetos</a></li>
+                    <li class="nav-item"><a class="nav-link" href="#videos" style="color: var(--gold) !important;">▶ Vídeos</a></li>
                     <li class="nav-item"><a class="nav-link" href="#clippings">Clippings</a></li>
                     <li class="nav-item"><a class="nav-link" href="#faq">Dúvidas</a></li>
                     <li class="nav-item"><a class="nav-link" href="#contact" style="color: var(--gold) !important;">Contato</a></li>
@@ -352,6 +503,109 @@ html, body {
         </div>
     </div>
 </section>
+
+    <!-- SEÇÃO DE VÍDEOS -->
+    <section id="videos">
+        <div class="container">
+
+            <!-- Banner de destaque para recrutadores -->
+            <div class="destaque-vaga-banner" data-aos="fade-up">
+                <i class="fas fa-star"></i>
+                <p>
+                    <strong>✦ Competência em Destaque: Gravação & Edição de Vídeos com Celular</strong>
+                    Gravo e edito vídeos com iPhone e CapCut com autonomia total — da captação à entrega final. Tenho domínio do processo audiovisual mobile: enquadramento, corte, trilha, legendas e ritmo de edição. Os vídeos abaixo são registros reais de produções que participei, editados por mim nos bastidores.
+                </p>
+            </div>
+
+            <div class="video-section-header" data-aos="fade-up">
+                <span class="video-badge-destaque"><i class="fas fa-video me-2"></i>Produção Audiovisual</span>
+                <h2 class="mb-2">Vídeos Gravados & Editados por Mim</h2>
+                <p class="text-muted" style="font-size:0.92rem; max-width:620px; margin:0 auto;">
+                    Produção 100% mobile — gravados com iPhone e editados no CapCut. Uma amostra da minha capacidade de criação audiovisual nos bastidores de grandes projetos de comunicação.
+                </p>
+            </div>
+
+            <div class="row g-3 justify-content-center">
+
+                <!-- Vídeo 1 -->
+                <div class="col-5 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="0">
+                    <div class="video-card">
+                        <video controls preload="metadata" poster="">
+                            <source src="assets/video1.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                        <div class="video-card-body">
+                            <span class="video-tag">Arroz Sports</span>
+                            <span class="video-tag-capcut">✂ CapCut</span>
+                            <h6>Estreia do Desafio Arroz Sports</h6>
+                            <p>Bastidores da gravação do episódio de estreia do quadro <em>Desafio Arroz Sports</em>, registrado e editado por mim nos bastidores.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vídeo 2 -->
+                <div class="col-5 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="100">
+                    <div class="video-card">
+                        <video controls preload="metadata" poster="">
+                            <source src="assets/video2.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                        <div class="video-card-body">
+                            <span class="video-tag">Edição Verão</span>
+                            <span class="video-tag-capcut">✂ CapCut</span>
+                            <h6>Canoa Havaiana — Edição Verão</h6>
+                            <p>Bastidores da gravação do episódio especial de verão sobre canoa havaiana, captado e editado por mim.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vídeo 3 -->
+                <div class="col-5 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="200">
+                    <div class="video-card">
+                        <video controls preload="metadata" poster="">
+                            <source src="assets/video3.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                        <div class="video-card-body">
+                            <span class="video-tag">Fortuna Crítica</span>
+                            <span class="video-tag-capcut">✂ CapCut</span>
+                            <h6>Tutorial de Maquiagem nos Bastidores</h6>
+                            <p>Registrei e editei este tutorial de maquiagem profissional nos bastidores do talk show <em>Fortuna Crítica</em>.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Vídeo 4 -->
+                <div class="col-5 col-md-3 col-lg-2" data-aos="fade-up" data-aos-delay="300">
+                    <div class="video-card">
+                        <video controls preload="metadata" poster="">
+                            <source src="assets/video4.mp4" type="video/mp4">
+                            Seu navegador não suporta a reprodução de vídeo.
+                        </video>
+                        <div class="video-card-body">
+                            <span class="video-tag">Arroz Sports</span>
+                            <span class="video-tag-capcut">✂ CapCut</span>
+                            <h6>Bastidores do Quadro de Notícias</h6>
+                            <p>Registro da rotina de produção e organização de pauta do quadro de notícias do <em>Arroz Sports</em>, editado por mim.</p>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- CTA para o Instagram -->
+            <div class="video-cta-simples" data-aos="fade-up">
+                <p class="video-cta-texto">Esses são apenas 4 exemplos do meu trabalho de gravação e edição. Há muito mais nos perfis onde atuei:</p>
+                <div class="video-cta-links">
+                    <a href="https://www.instagram.com/arrozesportes" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@arrozesportes</a>
+                    <a href="https://www.instagram.com/arrozdehauca" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@arrozdehauca</a>
+                    <a href="https://www.instagram.com/luismartins" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@luismartins</a>
+                    <a href="https://www.instagram.com/fortunacritica" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@fortunacritica</a>
+                </div>
+            </div>
+
+        </div>
+    </section>
 
 <section id="gallery" class="bg-white">
     <div class="container">
