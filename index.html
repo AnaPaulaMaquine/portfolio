@@ -132,6 +132,38 @@
         }
 
         /* --- MARCAS --- */
+        /* --- CARDS DE EXPERIÊNCIA NAS MARCAS --- */
+        .exp-brand-card {
+            background: var(--white);
+            border: 1px solid var(--border-light);
+            border-top: 4px solid var(--gold);
+            border-radius: 8px;
+            padding: 24px 22px;
+            height: 100%;
+            box-shadow: 0 8px 30px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .exp-brand-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 45px rgba(0,0,0,0.16);
+        }
+        .exp-brand-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: var(--navy);
+            margin-bottom: 12px;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--border-light);
+            letter-spacing: 0.5px;
+        }
+        .exp-brand-card p {
+            font-size: 0.83rem;
+            color: #555;
+            line-height: 1.7;
+            margin: 0;
+        }
+
         .brand-container { display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 50px; padding: 30px 0; filter: grayscale(100%); opacity: 0.6; transition: 0.5s; }
         .brand-container:hover { filter: grayscale(0%); opacity: 1; }
         .brand-item { height: 50px; display: flex; align-items: center; }
@@ -213,6 +245,55 @@
         footer i.text-gold { color: var(--gold) !important; }
         .modal-body iframe { width: 100%; height: 80vh; border: none; }
 		
+		/* --- CARDS DA GALERIA --- */
+        .gallery-person-card {
+            background: var(--white);
+            border-radius: 8px;
+            overflow: hidden;
+            border: 1px solid var(--border-light);
+            box-shadow: 0 8px 28px rgba(0,0,0,0.12);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        .gallery-person-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 16px 40px rgba(0,0,0,0.18);
+        }
+        .gallery-person-card .gallery-img {
+            border-radius: 0;
+            border: none;
+            box-shadow: none;
+            margin: 0;
+        }
+        .gallery-person-card .gallery-img:hover {
+            transform: none;
+            box-shadow: none;
+        }
+        .gallery-caption {
+            padding: 12px 14px;
+            border-top: 2px solid var(--gold);
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+        .gallery-caption strong {
+            font-size: 0.82rem;
+            color: var(--navy);
+            font-family: 'Playfair Display', serif;
+        }
+        .gallery-caption span {
+            font-size: 0.72rem;
+            color: #777;
+        }
+        .gallery-caption a {
+            font-size: 0.7rem;
+            color: var(--gold);
+            text-decoration: none;
+            font-weight: 600;
+            transition: opacity 0.2s;
+        }
+        .gallery-caption a:hover { opacity: 0.75; }
+        .gallery-caption a i { font-size: 0.68rem; }
+
 		/* --- ESTILO DA GALERIA --- */
 		.gallery-img {
 			width: 100%;
@@ -458,7 +539,7 @@ html, body {
     
     <section class="hero">
         <div class="container" data-aos="fade-up">
-            <span class="subtitle">Jornalista & Estrategista de Comunicação</span>
+            <span class="subtitle">Jornalista & Criadora de Conteúdo</span>
             <h1>Ana Paula Maquiné</h1>
             <p class="tagline"> Assessora de Imprensa | Social Media | Gestão de Imagem</p>
             <div class="d-flex justify-content-center flex-wrap">
@@ -628,7 +709,7 @@ html, body {
             <div class="video-cta-simples" data-aos="fade-up">
                 <p class="video-cta-texto">Esses são apenas 6 exemplos do meu trabalho de gravação e edição. Há muito mais nos perfis onde atuei:</p>
                 <div class="video-cta-links">
-                    <a href="https://www.instagram.com/arrozesportes" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@arrozesportes</a>
+                    <a href="https://www.instagram.com/arrozsports" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@arrozsports</a>
                     <a href="https://www.instagram.com/arrozdehauca" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@arrozdehauca</a>
                     <a href="https://www.instagram.com/luismartins" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@luismartins</a>
                     <a href="https://www.instagram.com/fortunacritica" target="_blank" class="video-cta-link"><i class="fab fa-instagram me-1"></i>@fortunacritica</a>
@@ -641,64 +722,147 @@ html, body {
 <section id="gallery" class="bg-white">
     <div class="container">
         <h2 class="text-center mb-2">Registros & Conexões</h2>
-        <p class="text-center text-muted mb-5 small">Momentos marcantes e presença estratégica no cenário jornalístico.</p>
+        <p class="text-center text-muted mb-2 small">Alguns dos convidados do Talkshow <strong><a href="https://www.instagram.com/fortunacritica" target="_blank" style="color:var(--gold);text-decoration:none;">@fortunacritica</a></strong> — da Produtora Arroz de Hauçá — onde atuei como assessora de imprensa.</p>
+        <p class="text-center text-muted mb-5 small">Da esquerda para a direita:</p>
         
         <div class="row g-4 justify-content-center">
             <div class="col-6 col-md-3" data-aos="zoom-in">
-                <img src="assets/foto1.jpg" class="gallery-img gallery-img-top" alt="Registro 1" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto1.jpg" class="gallery-img gallery-img-top" alt="Jorge Washington" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Jorge Washington</strong>
+                        <span>Ator e Afrochef</span>
+                        <a href="https://www.instagram.com/jorgewashingtonr" target="_blank"><i class="fab fa-instagram"></i> @jorgewashingtonr</a>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                <img src="assets/foto2.jpg" class="gallery-img" alt="Registro 2" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto2.jpg" class="gallery-img" alt="Ricardo Ishmael" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Ricardo Ishmael</strong>
+                        <span>Jornalista e Escritor</span>
+                        <a href="https://www.instagram.com/ricardoishmael" target="_blank"><i class="fab fa-instagram"></i> @ricardoishmael</a>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                <img src="assets/foto3.jpg" class="gallery-img" alt="Registro 3" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto3.jpg" class="gallery-img" alt="Fernando Guerreiro" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Fernando Guerreiro</strong>
+                        <span>Radialista, Produtor e Ator</span>
+                        <a href="https://www.instagram.com/fernando.guerreiro61" target="_blank"><i class="fab fa-instagram"></i> @fernando.guerreiro61</a>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                <img src="assets/foto4.jpg" class="gallery-img" alt="Registro 4" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto4.jpg" class="gallery-img" alt="Alexandre Peixe" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Alexandre Peixe</strong>
+                        <span>Cantor e Compositor</span>
+                        <a href="https://www.instagram.com/alexandrepeixe" target="_blank"><i class="fab fa-instagram"></i> @alexandrepeixe</a>
+                    </div>
+                </div>
             </div>
-
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="100">
-                <img src="assets/foto6.jpg" class="gallery-img" alt="Registro 6" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto6.jpg" class="gallery-img" alt="Hebert Conceição" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Hebert Conceição</strong>
+                        <span>Boxeador e Campeão Olímpico</span>
+                        <a href="https://www.instagram.com/hebertwilianboxe" target="_blank"><i class="fab fa-instagram"></i> @hebertwilianboxe</a>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="200">
-                <img src="assets/foto7.jpg" class="gallery-img" alt="Registro 7" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto7.jpg" class="gallery-img" alt="Edgard Abbehusen" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Edgard Abbehusen</strong>
+                        <span>Pedagogo e Filósofo</span>
+                        <a href="https://www.instagram.com/edgardabbehusen" target="_blank"><i class="fab fa-instagram"></i> @edgardabbehusen</a>
+                    </div>
+                </div>
             </div>
             <div class="col-6 col-md-3" data-aos="zoom-in" data-aos-delay="300">
-                <img src="assets/foto8.jpg" class="gallery-img" alt="Registro 8" onclick="openZoom(this.src)">
+                <div class="gallery-person-card">
+                    <img src="assets/foto8.jpg" class="gallery-img" alt="Irá Carvalho" onclick="openZoom(this.src)">
+                    <div class="gallery-caption">
+                        <strong>Irá Carvalho</strong>
+                        <span>Produtora de Eventos</span>
+                        <a href="https://www.instagram.com/irisproducoes" target="_blank"><i class="fab fa-instagram"></i> @irisproducoes</a>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
 </section>
 
 
-    <section id="brands" class="bg-white py-5">
-        <div class="container">
-            <div class="brand-container" data-aos="fade-up">
-                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=RECORD+TV" alt="Record TV"></div>
-                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=DEFENSORIA" alt="Defensoria Pública"></div>
-                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=MIDIACLIP" alt="Midiaclip"></div>
-                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=ARROZ+DE+HAUÇÁ" alt="Arroz de Hauçá"></div>
-                <div class="brand-item"><img src="https://placehold.co/200x80/1B263B/C5A467?text=BAHIA+NO+AR" alt="Bahia no Ar"></div>
-            </div>
-        </div>
-    </section>
 
     <section id="career">
         <div class="container">
             <h2 class="text-center mb-4">Trajetória Profissional</h2>
-            <div class="exp-card" data-aos="fade-up"><strong>Produtora Arroz de Hauçá (2023-2025)</strong><p class="small mb-0">Assessora de Imprensa: Media training e gestão de crises.</p></div>
-            <div class="exp-card" data-aos="fade-up"><strong>MIDIACLIP (9 Anos)</strong>
-                <div class="inner-steps">
-                    <div class="step"><strong>Coordenadora (2022):</strong> Liderança e atendimento estratégico.</div>
-                    <div class="step"><strong>Supervisora (2020-2021):</strong> Monitoramento eleitoral.</div>
-                    <div class="step"><strong>Auxiliar (2013-2019):</strong> Monitoramento analítico.</div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <strong>Produtora Arroz de Hauçá (2023–2025)</strong>
+                <span class="category-tag mt-1">Assessora de Imprensa &amp; Social Media</span>
+                <p class="small mb-0">Produção de textos jornalísticos e press releases para a imprensa local e nacional, atualização de mailing list e follow-up. Media training, gerenciamento de crise, elaboração de press kits e auxílio na produção de conteúdos audiovisuais. Liderança de equipe, planejamento estratégico e gestão de conteúdo (Instagram, Facebook, YouTube e TikTok). Cobertura de eventos, edição de vídeos, fotografia e monitoramento analítico de resultados.</p>
+            </div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <strong>Campanha Eleitoral — Isabel Guimarães (2022)</strong>
+                <span class="category-tag mt-1">Coordenadora de Comunicação</span>
+                <p class="small mb-0">Gestão das redes sociais da candidata, elaboração de pautas semanais e liderança da equipe de comunicação. Produção de conteúdos, relatórios semanais, edição de vídeos e cobertura de eventos.</p>
+            </div>
+
+            <div class="exp-card" data-aos="fade-up">
+                <strong>MIDIACLIP (2013–2022 · 9 Anos)</strong>
+                <div class="inner-steps mt-2">
+                    <div class="step"><strong>Coordenadora (2022):</strong> Liderança de equipes, edição de vídeo/áudio e atendimento estratégico ao cliente.</div>
+                    <div class="step"><strong>Supervisora (2020–2021):</strong> Líder de equipe na campanha de candidatos a prefeitos de Salvador e Região Metropolitana.</div>
+                    <div class="step"><strong>Auxiliar de Clipping (2013–2019):</strong> Monitoramento e análise de notícias em rádio, TV e portais para contas institucionais.</div>
                 </div>
             </div>
+
             <div class="row g-3">
-                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Bahia no Ar (2019-2020)</h6><p class="small text-muted mb-0">Repórter e redação.</p></div></div>
-                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Record TV (2012)</h6><p class="small text-muted mb-0">Assistente de Produção.</p></div></div>
-                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Defensoria Pública (2012-2013)</h6><p class="small text-muted mb-0">Estagiária: Releases e clipping.</p></div></div>
-                <div class="col-md-6" data-aos="fade-up"><div class="exp-card h-100"><h6>Varjão Comunicação (2011-2012)</h6><p class="small text-muted mb-0">Estagiária: Pesquisa analítica.</p></div></div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="exp-card h-100">
+                        <h6>Site Oxe! Qual é a boa? (2019–2020)</h6>
+                        <span class="category-tag">CEO / Diretora de Comunicação</span>
+                        <p class="small text-muted mb-0">Criação do portal e campanha de divulgação estratégica junto a Assessorias de Comunicação. Atendimento à imprensa, atualização de notícias de eventos e gestão de redes sociais.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="exp-card h-100">
+                        <h6>Bahia no Ar (2019–2020)</h6>
+                        <span class="category-tag">Repórter</span>
+                        <p class="small text-muted mb-0">Redação de notícias locais e internacionais, revisão de textos e produção de reportagens. Entrevistas externas, cobertura de eventos e fotografia.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="exp-card h-100">
+                        <h6>Defensoria Pública do Estado da Bahia (2012–2013)</h6>
+                        <span class="category-tag">Estagiária de Jornalismo</span>
+                        <p class="small text-muted mb-0">Produção de matérias e releases, follow up, clipping de notícias e atualização de site institucional. Agendamento de entrevistas e produção de relatórios de redes sociais.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="exp-card h-100">
+                        <h6>Record TV (2012)</h6>
+                        <span class="category-tag">Assistente de Produção (Temporário)</span>
+                        <p class="small text-muted mb-0">Organização da rotina de gravação e dos bastidores do Programa Ídolos em Salvador.</p>
+                    </div>
+                </div>
+                <div class="col-md-6" data-aos="fade-up">
+                    <div class="exp-card h-100">
+                        <h6>Varjão Comunicação Integrada (2011–2012)</h6>
+                        <span class="category-tag">Estagiária de Jornalismo</span>
+                        <p class="small text-muted mb-0">Pesquisa e recorte de notícias online sobre assuntos de interesse estratégico dos clientes.</p>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
